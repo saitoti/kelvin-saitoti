@@ -1,175 +1,927 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Technical Profile - Kelvin Saitoti Simiyu</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        table th, table td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-        table th {
-            background-color: #f4f4f4;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelvin Saitoti Simiyu — Cybersecurity & IT Leadership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #080d14;
+      --bg2:       #0d1520;
+      --bg3:       #111d2e;
+      --accent:    #00d4ff;
+      --accent2:   #00ff9d;
+      --accent3:   #ff6b35;
+      --text:      #d8e8f5;
+      --muted:     #5a7590;
+      --border:    rgba(0,212,255,0.12);
+      --glow:      0 0 20px rgba(0,212,255,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRID NOISE BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 64px;
+      background: rgba(8,13,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700; font-size: 18px; letter-spacing: 2px;
+      color: var(--accent);
+    }
+    .nav-logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 48px 80px;
+      overflow: hidden;
+    }
+    .hero-orb {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 70%);
+      right: -100px; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .hero-orb2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,157,0.05) 0%, transparent 70%);
+      left: 30%; bottom: -100px;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; }
+    .hero-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--accent2);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
+    }
+    .hero-tag::before { content: '> '; color: var(--accent); }
+    .hero-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(52px, 7vw, 86px);
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
+    }
+    .hero-name .accent { color: var(--accent); }
+    .hero-title {
+      font-size: 18px; font-weight: 300;
+      color: var(--muted);
+      margin: 16px 0 32px;
+      opacity: 0; animation: fadeUp 0.7s 0.6s forwards;
+    }
+    .hero-title strong { color: var(--text); font-weight: 500; }
+    .hero-stats {
+      display: flex; gap: 48px; margin-bottom: 40px;
+      opacity: 0; animation: fadeUp 0.7s 0.8s forwards;
+    }
+    .stat-val {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 42px; font-weight: 700; color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+    .hero-btns {
+      display: flex; gap: 16px;
+      opacity: 0; animation: fadeUp 0.7s 1s forwards;
+    }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+    .btn-primary {
+      background: var(--accent); color: #080d14;
+      border: none;
+    }
+    .btn-primary:hover { background: #fff; box-shadow: var(--glow); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .btn-outline:hover { background: rgba(0,212,255,0.1); }
+
+    /* ─── SECTION SCAFFOLD ─── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+    .section-wrap { padding: 100px 0; }
+
+    .section-header { margin-bottom: 60px; }
+    .section-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--accent);
+      letter-spacing: 3px; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700; color: #fff;
+      line-height: 1.1;
+    }
+    .section-title .dim { color: var(--muted); }
+    .section-line {
+      width: 48px; height: 3px;
+      background: var(--accent);
+      margin-top: 16px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .about-text p { color: var(--muted); margin-bottom: 16px; }
+    .about-text p strong { color: var(--text); }
+    .about-contact { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--muted);
+    }
+    .contact-item .ci-icon { color: var(--accent); width: 16px; text-align: center; }
+    .contact-item a { color: var(--accent); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    .competencies-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .comp-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 14px 18px;
+    }
+    .comp-name { font-size: 13px; color: var(--text); margin-bottom: 8px; }
+    .comp-bar-track {
+      height: 3px; background: rgba(0,212,255,0.1); border-radius: 2px;
+    }
+    .comp-bar-fill {
+      height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 1.2s ease;
+    }
+    .comp-meta { display: flex; justify-content: space-between; margin-top: 6px; }
+    .comp-yrs { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-bg { background: var(--bg2); }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .exp-item {
+      padding-left: 40px;
+      padding-bottom: 56px;
+      position: relative;
+    }
+    .exp-item::before {
+      content: '';
+      position: absolute; left: -5px; top: 6px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(0,212,255,0.6);
+    }
+    .exp-period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; color: var(--accent);
+      letter-spacing: 1px; margin-bottom: 6px;
+    }
+    .exp-role {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px; font-weight: 700; color: #fff;
+      line-height: 1.2;
+    }
+    .exp-org {
+      font-size: 14px; color: var(--accent2);
+      margin: 4px 0 16px;
+    }
+    .exp-desc { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 4px 12px;
+      border-radius: 3px;
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.2);
+      font-size: 11px; color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+    }
+    .tag.green {
+      background: rgba(0,255,157,0.07);
+      border-color: rgba(0,255,157,0.2);
+      color: var(--accent2);
+    }
+    .exp-achievements { margin-top: 14px; }
+    .ach-item {
+      display: flex; gap: 10px;
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 6px; align-items: flex-start;
+    }
+    .ach-item::before {
+      content: '▸';
+      color: var(--accent); flex-shrink: 0; margin-top: 2px;
+    }
+    .ach-item strong { color: var(--accent2); font-weight: 500; }
+
+    /* ─── EXTERNAL PROJECTS ─── */
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .proj-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .proj-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .proj-card:hover { border-color: rgba(0,212,255,0.35); transform: translateY(-4px); }
+    .proj-card:hover::before { opacity: 1; }
+    .proj-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--accent);
+      letter-spacing: 1px; margin-bottom: 10px;
+    }
+    .proj-name { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .proj-client { font-size: 12px; color: var(--accent2); margin-bottom: 12px; }
+    .proj-role-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 3px;
+      background: rgba(0,255,157,0.08);
+      border: 1px solid rgba(0,255,157,0.2);
+      font-size: 11px; color: var(--accent2);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .proj-loc { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .proj-loc::before { content: '📍 '; }
+
+    /* ─── CERTS ─── */
+    .certs-bg { background: var(--bg2); }
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .cert-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover { border-color: rgba(0,212,255,0.3); }
+    .cert-icon {
+      width: 36px; height: 36px; border-radius: 6px;
+      background: rgba(0,212,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+    .cert-name { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+    .cert-issuer { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    .cert-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px; color: var(--accent);
+      margin-top: 5px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .skill-group-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .skill-pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill {
+      padding: 5px 14px;
+      border-radius: 20px;
+      background: rgba(0,212,255,0.06);
+      border: 1px solid rgba(0,212,255,0.15);
+      font-size: 12px; color: var(--text);
+      transition: all 0.2s;
+    }
+    .skill-pill:hover { background: rgba(0,212,255,0.14); color: var(--accent); }
+
+    /* ─── EDUCATION ─── */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .edu-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .edu-degree {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 19px; font-weight: 700; color: #fff;
+      margin-bottom: 6px;
+    }
+    .edu-institution { font-size: 13px; color: var(--accent2); margin-bottom: 8px; }
+    .edu-years { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .footer-left {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px; color: var(--muted);
+    }
+    .footer-left span { color: var(--accent); }
+    .footer-right { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 120px 24px 60px; }
+      .container { padding: 0 24px; }
+      .hero-stats { gap: 24px; }
+      .about-grid, .edu-grid, .skills-cols { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Technical Profile</h1>
-    <p><strong>Name:</strong> Kelvin Saitoti Simiyu</p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kelvin-saitoti">Kelvin Saitoti | LinkedIn</a></p>
 
-    <div class="section">
-        <h2>Technologies, Programming Languages, OS, and Tools</h2>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">KSS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
 
-        <h3>a) Tourism Promotional Services Ltd - Serena Hotels</h3>
-        <p><strong>Operating System:</strong> Windows, Linux, and Oracle</p>
-        <p><strong>Technologies:</strong></p>
-        <ul>
-            <li>Data analytics and Integrations (BI and QLIK)</li>
-            <li>Databases (SQL and AIX)</li>
-            <li>Webservices (IIS, JSON, API, JAVA)</li>
-            <li>Microsoft Dynamics Navision (CRM)</li>
-            <li>ISOROBOT</li>
-            <li>Microsoft Azure Security</li>
-            <li>EDR (Intune, Sentinel)</li>
-            <li>Google Cloud Security</li>
-            <li>Grafana</li>
-            <li>Burp Suite and Postman</li>
-        </ul>
-        <p><strong>Programming Languages:</strong> Python, JavaScript, CAL</p>
-        <p><strong>Tools:</strong></p>
-        <ul>
-            <li>BI and QLIK</li>
-            <li>Vulnerability Assessment: Nessus Pro, Rapid7 Agent, OpenVAS, Nmap</li>
-            <li>Endpoints: Sophos XRD and DLP</li>
-            <li>OT/ICS Penetration Testing: Advanced NSE Scripts using Nmap, plc scan, s7scan, smod</li>
-            <li>Network Penetration Testing: Wireshark, Ettercap, Nmap, Metasploit</li>
-            <li>Web Penetration Testing: Burp Suite, OWASP ZAP, Nikto, SQLmap, Dirb, Gobuster, Sublist3r</li>
-            <li>Sophos Firewall</li>
-            <li>Zscaler ZTNA</li>
-            <li>Wazuh SIEM</li>
-        </ul>
-
-        <h3>b) Maisha Bora Sacco</h3>
-        <p><strong>Operating System:</strong> Windows and Linux</p>
-        <p><strong>Technologies:</strong></p>
-        <ul>
-            <li>Data analytics and Integrations (BI and QLIK)</li>
-            <li>Databases (SQL and AIX)</li>
-            <li>APIs and USSD</li>
-            <li>Microsoft Dynamics Navision Business Central (Cloud and Premise)</li>
-            <li>Microsoft SC-900</li>
-            <li>Microsoft Azure Security</li>
-            <li>EDR (Intune, Sentinel)</li>
-            <li>Fortigate Firewall</li>
-        </ul>
-        <p><strong>Programming Languages:</strong> Python, JavaScript, CAL</p>
-        <p><strong>Tools:</strong></p>
-        <ul>
-            <li>BI and QLIK</li>
-            <li>Vulnerability Assessment: Nessus Pro, Rapid7 Agent, OpenVAS, Nmap</li>
-            <li>Endpoints: Sophos XRD and DLP</li>
-            <li>OT/ICS Penetration Testing: Advanced NSE Scripts using Nmap, plc scan, s7scan, smod</li>
-            <li>Network Penetration Testing: Wireshark, Ettercap, Nmap, Metasploit</li>
-            <li>Web Penetration Testing: Burp Suite, OWASP ZAP, Nikto, SQLmap, Dirb, Gobuster, Sublist3r</li>
-        </ul>
-
-        <h3>c) Ed Partners Africa</h3>
-        <p><strong>Operating System:</strong> Windows and Linux</p>
-        <p><strong>Tools:</strong></p>
-        <ul>
-            <li>Microsoft: PowerApps, SharePoint, and Power BI</li>
-            <li>Mobile Applications: PowerApps</li>
-            <li>Sophos</li>
-        </ul>
-
-        <h3>d) Kenya Bankers Sacco Ltd</h3>
-        <p><strong>Operating System:</strong> Windows and Linux</p>
-        <p><strong>Tools:</strong></p>
-        <ul>
-            <li>Vulnerability Assessment: Nessus Pro, Rapid7 Agent, OpenVAS, Nmap</li>
-            <li>OT/ICS Penetration Testing: Advanced NSE Scripts using Nmap, plc scan, s7scan, smod</li>
-            <li>Network Penetration Testing: Wireshark, Ettercap, Nmap, Metasploit</li>
-            <li>Web Penetration Testing: Burp Suite, OWASP ZAP, Nikto, SQLmap, Dirb, Gobuster, Sublist3r</li>
-            <li>Endpoints: Checkpoint, Bitdefender XDRs</li>
-            <li>Palo-Alto and Checkpoint Firewall</li>
-        </ul>
-        <p><strong>Programming Languages:</strong> Python, JavaScript</p>
-
-        <h3>e) Sheria Sacco Society Ltd</h3>
-        <p><strong>Operating System:</strong> Windows and Linux</p>
-        <p><strong>Tools:</strong></p>
-        <ul>
-            <li>Network Monitoring: Zabbix, SolarWinds, and ManageEngine</li>
-            <li>Microsoft Sentinel</li>
-            <li>Fortigate Firewall</li>
-        </ul>
-        <p><strong>Programming Languages:</strong> Python, JavaScript</p>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">IT Management &amp; Information Security</div>
+    <div class="hero-name">Kelvin<br><span class="accent">Saitoti</span><br>Simiyu</div>
+    <p class="hero-title">
+      <strong>Cybersecurity Leader · GRC Advisor · SOC Architect</strong><br>
+      11+ years securing financial institutions, SACCOs, government agencies &amp; enterprise environments across East Africa.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-val">11+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-val">30+</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+      <div>
+        <div class="stat-val">8+</div>
+        <div class="stat-label">VAPT Engagements</div>
+      </div>
     </div>
-
-    <div class="section">
-        <h2>Competence Overview</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Competence</th>
-                    <th>Total Years of Experience</th>
-                    <th>Skill Level (1-5, 5=Expert)</th>
-                    <th>Last Used (Year)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Cyber Resilience</td>
-                    <td>7</td>
-                    <td>5</td>
-                    <td>2024</td>
-                </tr>
-                <tr>
-                    <td>Cybersecurity Standards</td>
-                    <td>6</td>
-                    <td>4</td>
-                    <td>2024</td>
-                </tr>
-                <tr>
-                    <td>IT Strategy</td>
-                    <td>7</td>
-                    <td>5</td>
-                    <td>2024</td>
-                </tr>
-                <tr>
-                    <td>Governance, Risk, and Compliance</td>
-                    <td>7</td>
-                    <td>4</td>
-                    <td>2024</td>
-                </tr>
-                <tr>
-                    <td>Cloud Security (Azure, AWS, Google Workspace)</td>
-                    <td>7</td>
-                    <td>5</td>
-                    <td>2024</td>
-                </tr>
-                <!-- Add more rows as necessary -->
-            </tbody>
-        </table>
+    <div class="hero-btns">
+      <a href="mailto:kevsait5@gmail.com" class="btn btn-primary">Get In Touch</a>
+      <a href="https://saitoti.github.io/kelvin-saitoti/" target="_blank" class="btn btn-outline">View GitHub</a>
     </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 01 — Profile</div>
+      <h2 class="section-title">About <span class="dim">Me</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>With over <strong>11 years of experience</strong> in Information Security and Technology, I am a versatile and results-driven professional with a strong track record of delivering exceptional service and impactful solutions.</p>
+        <p>My expertise spans <strong>Cybersecurity Operations, GRC Advisory, SOC Architecture, VAPT, Cloud Security</strong>, and enterprise IT strategy. I have led security programmes for financial institutions, hospitality groups, SACCOs, and government agencies across Kenya, Rwanda, and Somalia.</p>
+        <p>I excel at bridging the gap between <strong>technical depth and executive communication</strong> — advising boards, running red team exercises, and producing ISO 27001-aligned governance frameworks, all within the same engagement.</p>
+        <div class="about-contact">
+          <div class="contact-item"><span class="ci-icon">✉</span> <a href="mailto:kevsait5@gmail.com">kevsait5@gmail.com</a></div>
+          <div class="contact-item"><span class="ci-icon">☎</span> +254 701 213 240</div>
+          <div class="contact-item"><span class="ci-icon">⌨</span> <a href="https://saitoti.github.io/kelvin-saitoti/" target="_blank">saitoti.github.io/kelvin-saitoti</a></div>
+          <div class="contact-item"><span class="ci-icon">📍</span> Nairobi, Kenya</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="competencies-grid">
+          <div class="comp-item">
+            <div class="comp-name">Cyber Resilience</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:100%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">7 yrs</span><span class="comp-yrs">Expert</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">IT Strategy</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:100%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">7 yrs</span><span class="comp-yrs">Expert</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">Cloud Security</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:100%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">7 yrs</span><span class="comp-yrs">Expert</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">IT Risk Management</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:100%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">6 yrs</span><span class="comp-yrs">Expert</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">Vulnerability Assessment</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:100%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">5 yrs</span><span class="comp-yrs">Expert</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">Penetration Testing</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:80%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">5 yrs</span><span class="comp-yrs">Advanced</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">GRC Advisory</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:80%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">7 yrs</span><span class="comp-yrs">Advanced</span></div>
+          </div>
+          <div class="comp-item">
+            <div class="comp-name">Data Loss Prevention</div>
+            <div class="comp-bar-track"><div class="comp-bar-fill" style="width:80%"></div></div>
+            <div class="comp-meta"><span class="comp-yrs">5 yrs</span><span class="comp-yrs">Advanced</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-bg">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 02 — Career</div>
+      <h2 class="section-title">Work <span class="dim">Experience</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="timeline">
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Aug 2024 — Jul 2025</div>
+        <div class="exp-role">Head of Cyber Security Operations Center</div>
+        <div class="exp-org">Spearhead INC</div>
+        <div class="exp-desc">Contracted to design and lead the establishment of a Security Operations Centre from the ground up — integrating open-source and commercial tools to secure IoT infrastructure, GCP cloud, and enterprise assets.</div>
+        <div class="exp-tags">
+          <span class="tag">SOC Architecture</span>
+          <span class="tag">Wazuh SIEM</span>
+          <span class="tag">GCP Security</span>
+          <span class="tag">Zero-Trust</span>
+          <span class="tag">CrowdStrike Falcon</span>
+          <span class="tag">SOAR Automation</span>
+          <span class="tag green">ISO 27001</span>
+          <span class="tag green">SOC 2</span>
+        </div>
+        <div class="exp-achievements">
+          <div class="ach-item"><strong>30% improvement</strong>&nbsp;in targeted attack detection via threat intelligence integration.</div>
+          <div class="ach-item">Reduced incident response time from <strong>45 min → under 10 min</strong> using SOAR playbooks.</div>
+          <div class="ach-item"><strong>80% reduction</strong>&nbsp;in high-risk vulnerabilities within two quarters.</div>
+          <div class="ach-item"><strong>95% asset visibility</strong>&nbsp;across on-prem, GCP, and IoT environments.</div>
+          <div class="ach-item"><strong>60% reduction</strong>&nbsp;in phishing click-through rates over 6 months.</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Aug 2023 — Aug 2024</div>
+        <div class="exp-role">ICT GRC Advisory & Data Protection Officer</div>
+        <div class="exp-org">Tourism Promotional Services Ltd (Serena Hotels)</div>
+        <div class="exp-desc">Second Line of Defence advisory role overseeing IT security risk management, data protection compliance, and VAPT execution for a pan-African hospitality group.</div>
+        <div class="exp-tags">
+          <span class="tag">GRC</span>
+          <span class="tag">VAPT</span>
+          <span class="tag">OWASP Top 10</span>
+          <span class="tag">OPERA Cloud</span>
+          <span class="tag">DPO</span>
+          <span class="tag green">GDPR</span>
+          <span class="tag green">ISO 27001</span>
+        </div>
+        <div class="exp-achievements">
+          <div class="ach-item"><strong>100% VAPT success rate</strong>&nbsp;across all engagements.</div>
+          <div class="ach-item"><strong>65% improvement</strong>&nbsp;in data protection compliance through DPIA and RoPA development.</div>
+          <div class="ach-item"><strong>90% of security gaps</strong>&nbsp;identified and resolved through comprehensive ICT risk assessment.</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Feb 2022 — Aug 2023</div>
+        <div class="exp-role">ICT Manager</div>
+        <div class="exp-org">Maisha Bora Sacco Society Limited</div>
+        <div class="exp-desc">Led the Sacco's full technological transformation — from deploying Wazuh XDR/SIEM to launching a Pesalink mobile banking platform and achieving 60% process automation via MS Dynamics Navision Business Central.</div>
+        <div class="exp-tags">
+          <span class="tag">Wazuh XDR</span>
+          <span class="tag">Navision BC</span>
+          <span class="tag">BI / Qlik</span>
+          <span class="tag">Mobile Banking</span>
+          <span class="tag">IT Strategy</span>
+          <span class="tag green">ISO 9001</span>
+        </div>
+        <div class="exp-achievements">
+          <div class="ach-item"><strong>80% profitability improvement</strong>&nbsp;through BI analytics implementation.</div>
+          <div class="ach-item"><strong>98% IT uptime</strong>&nbsp;after implementing SACCO IT helpdesk.</div>
+          <div class="ach-item"><strong>95% fraud response success rate</strong>&nbsp;across cybersecurity incidents.</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Feb 2021 — Jan 2022</div>
+        <div class="exp-role">Senior ICT Manager</div>
+        <div class="exp-org">Education Partners Africa Ltd</div>
+        <div class="exp-desc">Led digital transformation including customer self-service portal, mobile app, and Azure AD centralisation during remote-work transition. Managed full cloud ERP migration.</div>
+        <div class="exp-tags">
+          <span class="tag">Azure AD</span>
+          <span class="tag">Power Apps</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">VAPT</span>
+          <span class="tag green">Data Protection</span>
+        </div>
+        <div class="exp-achievements">
+          <div class="ach-item"><strong>85% reduction</strong>&nbsp;in recovery point objective with automated off-site backup.</div>
+          <div class="ach-item"><strong>50% customer experience improvement</strong>&nbsp;via digital transformation programme.</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Nov 2017 — Feb 2021</div>
+        <div class="exp-role">Lead Cyber Security Analyst</div>
+        <div class="exp-org">Kenya Bankers Sacco Ltd</div>
+        <div class="exp-desc">Comprehensive cybersecurity strategy ownership for a regulated Sacco — spanning SASRA compliance, VAPT, SOC monitoring, cloud migration security, and perimeter hardening.</div>
+        <div class="exp-tags">
+          <span class="tag">T24 Core Banking</span>
+          <span class="tag">Checkpoint</span>
+          <span class="tag">Forcepoint</span>
+          <span class="tag">PAM (Centrify)</span>
+          <span class="tag green">SASRA</span>
+          <span class="tag green">COBIT · NIST</span>
+        </div>
+        <div class="exp-achievements">
+          <div class="ach-item"><strong>80% reduction</strong>&nbsp;in email downtime after migration to Office 365.</div>
+          <div class="ach-item"><strong>70% reduction</strong>&nbsp;in email-attack exposure via Forcepoint gateway.</div>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-period">Feb 2014 — Nov 2017</div>
+        <div class="exp-role">ICT Officer</div>
+        <div class="exp-org">Sheria Sacco Society Ltd</div>
+        <div class="exp-desc">Administered core banking, network infrastructure, and security — proposing and implementing mobile banking, firewall procurement, DAM, and disaster recovery environments.</div>
+        <div class="exp-tags">
+          <span class="tag">Navision 2015</span>
+          <span class="tag">Fortigate</span>
+          <span class="tag">Exchange 2016</span>
+          <span class="tag">VAPT</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXTERNAL PROJECTS -->
+<section id="projects">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 03 — Consulting</div>
+      <h2 class="section-title">External <span class="dim">Projects</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-date">JAN 2026</div>
+        <div class="proj-name">System Audit &amp; VAPT</div>
+        <div class="proj-client">KT Rwanda Networks · via Sentinel Africa Ltd</div>
+        <span class="proj-role-badge">Lead VAPT Consultant</span>
+        <div class="proj-loc">Rwanda</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">NOV 2025</div>
+        <div class="proj-name">System Audit &amp; VAPT</div>
+        <div class="proj-client">Immigration &amp; Citizen Agency · via Certi-Trust</div>
+        <span class="proj-role-badge">Lead Technical Consultant</span>
+        <div class="proj-loc">Somalia — Mogadishu</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">OCT 2025</div>
+        <div class="proj-name">ISMS Audit</div>
+        <div class="proj-client">Sight &amp; Sound Computer Ltd · via Certi-Trust</div>
+        <span class="proj-role-badge">Lead Observation Consultant</span>
+        <div class="proj-loc">Kenya</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">SEPT 2025</div>
+        <div class="proj-name">Government System Audit</div>
+        <div class="proj-client">NIEBC · via Certi-Trust</div>
+        <span class="proj-role-badge">Lead VAPT Consultant</span>
+        <div class="proj-loc">Somalia</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">AUG 2025</div>
+        <div class="proj-name">Information Security Policy &amp; VAPT</div>
+        <div class="proj-client">Bibilia Sacco Society · via E'Lever Interactive Ltd</div>
+        <span class="proj-role-badge">Lead Consultant</span>
+        <div class="proj-loc">Kenya</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">JUL 2025</div>
+        <div class="proj-name">ICT &amp; Enterprise Architecture Strategy</div>
+        <div class="proj-client">KeNHA · via Prudmat Technologies</div>
+        <span class="proj-role-badge">Cybersecurity &amp; EA Consultant</span>
+        <div class="proj-loc">Kenya</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">MAY 2025</div>
+        <div class="proj-name">T-Kash System Security &amp; VAPT</div>
+        <div class="proj-client">Telkom Kenya · via Sentinel Africa Ltd</div>
+        <span class="proj-role-badge">Lead VAPT Consultant</span>
+        <div class="proj-loc">Kenya</div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-date">MAY 2025</div>
+        <div class="proj-name">Enterprise Infrastructure VAPT</div>
+        <div class="proj-client">Kenya Re · via Sentinel Africa Ltd</div>
+        <span class="proj-role-badge">Lead VAPT Consultant</span>
+        <div class="proj-loc">Kenya</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="certs-bg">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 04 — Credentials</div>
+      <h2 class="section-title">Technical <span class="dim">Certifications</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="certs-grid">
+
+      <div class="cert-card reveal"><div class="cert-icon">🔴</div><div><div class="cert-name">Active Defense &amp; Cyber Deception</div><div class="cert-issuer">AntiSyphon Training</div><div class="cert-year">2026</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🔴</div><div><div class="cert-name">Certified Threat Intelligence &amp; Governance Analyst (CTIGA)</div><div class="cert-issuer">Red Team Leaders</div><div class="cert-year">2026</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🔴</div><div><div class="cert-name">Certified Red Team Operations Management</div><div class="cert-issuer">Red Team Leaders</div><div class="cert-year">2026</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🛡️</div><div><div class="cert-name">ISO 27001 Lead Implementor</div><div class="cert-issuer">PECB</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🤖</div><div><div class="cert-name">AI Security &amp; Governance</div><div class="cert-issuer">Securiti</div><div class="cert-year">2025</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">☁️</div><div><div class="cert-name">Google Cloud Security Engineer</div><div class="cert-issuer">Google</div><div class="cert-year">2024</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">👑</div><div><div class="cert-name">Chief Information Security Officer (CISO)</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2024</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🔐</div><div><div class="cert-name">CEH v12 — Ethical Hacking &amp; Network Security</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2023</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🌐</div><div><div class="cert-name">API Penetration Testing</div><div class="cert-issuer">API Testing University</div><div class="cert-year">2023</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">☁️</div><div><div class="cert-name">AWS Certified Security Specialty</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2022</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🏗️</div><div><div class="cert-name">TOGAF</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2022</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🔍</div><div><div class="cert-name">CompTIA PenTest+</div><div class="cert-issuer">CompTIA</div><div class="cert-year">2021</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🛡️</div><div><div class="cert-name">ISO 27001 Lead Implementer</div><div class="cert-issuer">PECB</div><div class="cert-year">2020</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🔒</div><div><div class="cert-name">CompTIA Security+ 501</div><div class="cert-issuer">CompTIA</div><div class="cert-year">2020</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">👑</div><div><div class="cert-name">Certified CISO (CCISO)</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2019</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🏅</div><div><div class="cert-name">CISSP</div><div class="cert-issuer">Simplilearn / ISC²</div><div class="cert-year">2019</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🛡️</div><div><div class="cert-name">Certified Network Defender (CND)</div><div class="cert-issuer">EC-Council</div><div class="cert-year">2018</div></div></div>
+      <div class="cert-card reveal"><div class="cert-icon">🌐</div><div><div class="cert-name">CCNA</div><div class="cert-issuer">Cisco / IAT</div><div class="cert-year">2016</div></div></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 05 — Toolkit</div>
+      <h2 class="section-title">Technical <span class="dim">Skills</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-cols">
+      <div class="reveal">
+        <div class="skill-group-title">Security Tools</div>
+        <div class="skill-pill-wrap">
+          <span class="skill-pill">Wazuh SIEM/XDR</span>
+          <span class="skill-pill">Nessus Pro</span>
+          <span class="skill-pill">Rapid7</span>
+          <span class="skill-pill">OpenVAS</span>
+          <span class="skill-pill">Burp Suite</span>
+          <span class="skill-pill">Metasploit</span>
+          <span class="skill-pill">Nmap</span>
+          <span class="skill-pill">OWASP ZAP</span>
+          <span class="skill-pill">SQLMap</span>
+          <span class="skill-pill">Nikto</span>
+          <span class="skill-pill">Gobuster</span>
+          <span class="skill-pill">Wireshark</span>
+          <span class="skill-pill">CrowdStrike Falcon</span>
+          <span class="skill-pill">Sophos XDR</span>
+          <span class="skill-pill">Checkpoint</span>
+          <span class="skill-pill">Fortigate</span>
+          <span class="skill-pill">Zscaler ZTNA</span>
+          <span class="skill-pill">Delinea</span>
+          <span class="skill-pill">Centrify PAM</span>
+          <span class="skill-pill">Security Onion IPS</span>
+          <span class="skill-pill">Forcepoint</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-title">Cloud &amp; Infrastructure</div>
+        <div class="skill-pill-wrap">
+          <span class="skill-pill">Google Cloud (GCP)</span>
+          <span class="skill-pill">Microsoft Azure</span>
+          <span class="skill-pill">AWS Security</span>
+          <span class="skill-pill">Azure Sentinel</span>
+          <span class="skill-pill">Intune</span>
+          <span class="skill-pill">Jamf Pro</span>
+          <span class="skill-pill">Prometheus</span>
+          <span class="skill-pill">Grafana</span>
+          <span class="skill-pill">SharePoint</span>
+          <span class="skill-pill">Power BI</span>
+          <span class="skill-pill">PowerApps</span>
+          <span class="skill-pill">MS Navision BC</span>
+          <span class="skill-pill">Qlik</span>
+          <span class="skill-pill">Sentry</span>
+          <span class="skill-pill">ISORobot</span>
+          <span class="skill-pill">Linux (Ubuntu/CentOS)</span>
+          <span class="skill-pill">Windows Server</span>
+          <span class="skill-pill">SQL Server</span>
+          <span class="skill-pill">Oracle</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-group-title">Frameworks &amp; Standards</div>
+        <div class="skill-pill-wrap">
+          <span class="skill-pill">ISO 27001:2022</span>
+          <span class="skill-pill">NIST CSF</span>
+          <span class="skill-pill">COBIT</span>
+          <span class="skill-pill">COSO</span>
+          <span class="skill-pill">CIS Controls</span>
+          <span class="skill-pill">OWASP</span>
+          <span class="skill-pill">GDPR / CIPT</span>
+          <span class="skill-pill">SASRA</span>
+          <span class="skill-pill">SOC 2</span>
+          <span class="skill-pill">TOGAF</span>
+          <span class="skill-pill">Zero-Trust</span>
+          <span class="skill-pill">STRIDE</span>
+          <span class="skill-pill">MITRE ATT&amp;CK</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">Bash / Shell</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="exp-bg">
+  <div class="container section-wrap">
+    <div class="section-header reveal">
+      <div class="section-tag">// 06 — Academic</div>
+      <h2 class="section-title">Education</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Post Graduate Program in Cyber Security</div>
+        <div class="edu-institution">SimpliLearn &amp; MIT University</div>
+        <div class="edu-years">2023</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Bachelor of Business Information Technology (BBIT)</div>
+        <div class="edu-institution">Kenya College of Accountancy University (KCA)</div>
+        <div class="edu-years">2023 — Expected 2026 (Continuing)</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Diploma in Business Information Technology</div>
+        <div class="edu-institution">Mount Kenya University</div>
+        <div class="edu-years">2011 — 2013 · Structured Cabling, TCP/IP, Network Programming</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Kenya Certificate of Secondary Education</div>
+        <div class="edu-institution">Friends High School — Bokoli</div>
+        <div class="edu-years">2006 — 2009</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    &copy; 2026 <span>Kelvin Saitoti Simiyu</span> — IT Management &amp; Information Security
+  </div>
+  <div class="footer-right">kevsait5@gmail.com · +254 701 213 240</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
